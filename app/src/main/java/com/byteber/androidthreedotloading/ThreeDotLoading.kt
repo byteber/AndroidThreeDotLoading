@@ -43,22 +43,22 @@ class ThreeDotLoading @JvmOverloads constructor(
         animator = TimeAnimator().apply {
             setTimeListener { timeAnimator, totalTime, deltaTime ->
                 dotScales[0] = getNextScale(totalTime)
-                dotScales[1] = getNextScale(totalTime - 350)
-                dotScales[2] = getNextScale(totalTime - 700)
+                dotScales[1] = getNextScale(totalTime - 170)
+                dotScales[2] = getNextScale(totalTime - 340)
                 invalidate()
             }
         }
     }
 
     private fun getNextScale(totalTime: Long): Float {
-        val periodTime = totalTime % 3000
-        if (periodTime >= 2000) {
+        val periodTime = totalTime % 1500
+        if (periodTime >= 1000) {
             return 0f
         }
-        if (periodTime <= 1000) {
-            return periodTime.toFloat() / 1000
+        if (periodTime <= 500) {
+            return periodTime.toFloat() / 500
         }
-        return (2000 - periodTime).toFloat() / 1000
+        return (1000 - periodTime).toFloat() / 500
     }
 
     override fun onDraw(canvas: Canvas?) {
