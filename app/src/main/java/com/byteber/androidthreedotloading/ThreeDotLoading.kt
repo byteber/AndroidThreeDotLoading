@@ -20,6 +20,12 @@ class ThreeDotLoading @JvmOverloads constructor(
 
     override fun onVisibilityChanged(changedView: View?, visibility: Int) {
         super.onVisibilityChanged(changedView, visibility)
+        if (isInEditMode) {
+            dotScales[0] = 0.3f
+            dotScales[1] = 0.6f
+            dotScales[2] = 0.9f
+            return
+        }
         if (visibility == View.VISIBLE) {
             if (animator == null) {
                 createAnimator()
